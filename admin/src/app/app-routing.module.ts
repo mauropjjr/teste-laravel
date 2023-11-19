@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'pessoas',
         data: {
-          title: 'Pessoas'
+          title: 'Pedidos'
         },
         loadChildren: () =>
           import('./views/pessoas/pessoas.module').then((m) => m.PessoasModule)
