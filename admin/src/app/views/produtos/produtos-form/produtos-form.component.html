@@ -1,0 +1,102 @@
+<c-card class="mb-3">
+    <c-card-body>
+        <form cForm [formGroup]="simpleForm" novalidate (ngSubmit)="onSubmit()">
+            <c-card class="mb-3">
+                <c-card-body>
+                    <c-row [gutter]="2">
+                        <c-col [sm]="6" [md]="4" [xl]="4">
+                            <div cFormFloating>
+                                <input cFormControl id="nome" formControlName="nome" placeholder="Nome"
+                                    autocomplete="off"  [autofocus]="true" [valid]="
+                    getForms['nome'].touched && getForms['nome'].valid
+                      ? true
+                      : (submitted || getForms['nome'].touched) && getForms['nome'].invalid
+                      ? false
+                      : undefined
+                  " />
+
+                                <label cLabel for="floatingSelectGrid">Nome</label>
+                                <c-form-feedback *ngIf="submitted || getForms['nome'].invalid"
+                                    [valid]="!(submitted || getForms['nome'].invalid)">
+                                    <ng-container *ngIf="getForms['nome'].errors as errors">
+                                        <div>Obrigatório</div>
+                                    </ng-container>
+
+                                </c-form-feedback>
+                            </div>
+                        </c-col>
+                        <c-col [sm]="6" [md]="4" [xl]="4">
+                            <div cFormFloating>
+                                <input cFormControl id="descricao" formControlName="descricao"
+                                    placeholder="Descrição" autocomplete="off" required [autofocus]="true" [valid]="
+                    getForms['descricao'].touched && getForms['descricao'].valid
+                      ? true
+                      : (submitted || getForms['descricao'].touched) && getForms['descricao'].invalid
+                      ? false
+                      : undefined
+                  " />
+                                <c-form-feedback *ngIf="submitted || getForms['descricao'].invalid"
+                                    [valid]="!(submitted || getForms['descricao'].invalid)">
+                                    <ng-container *ngIf="getForms['descricao'].errors as errors">
+                                        <div>Obrigatório</div>
+                                    </ng-container>
+
+                                </c-form-feedback>
+                                <label cLabel for="floatingSelectGrid">Descrição</label>
+                            </div>
+                        </c-col>
+                        <c-col [sm]="6" [md]="4" [xl]="4">
+                            <div cFormFloating>
+                                <input type="number" cFormControl id="valor" formControlName="valor"
+                                    placeholder="Valor" autocomplete="off" required [autofocus]="true" [valid]="
+                    getForms['valor'].touched && getForms['valor'].valid
+                      ? true
+                      : (submitted || getForms['valor'].touched) && getForms['valor'].invalid
+                      ? false
+                      : undefined
+                  " />
+                                <c-form-feedback *ngIf="submitted || getForms['valor'].invalid"
+                                    [valid]="!(submitted || getForms['valor'].invalid)">
+                                    <ng-container *ngIf="getForms['valor'].errors as errors">
+                                        <div>Obrigatório</div>
+                                    </ng-container>
+
+                                </c-form-feedback>
+                                <label cLabel for="floatingSelectGrid">Valor</label>
+                            </div>
+                        </c-col>
+
+
+
+                        <c-col [sm]="6" [md]="4" [xl]="4">
+                            <div cFormFloating>
+                                <c-form-check>
+                                    <input cFormCheckInput id="status" name="status" type="checkbox"
+                                        formControlName="status" />
+                                    <label cFormCheckLabel for="status">Ativo</label>
+                                </c-form-check>
+
+                                <c-form-feedback *ngIf="submitted || getForms['status'].invalid"
+                                    [valid]="!(submitted || getForms['status'].invalid)">
+                                    <ng-container *ngIf="getForms['status'].errors as errors">
+                                        <div>Obrigatório</div>
+                                    </ng-container>
+                                </c-form-feedback>
+                            </div>
+                        </c-col>
+                    </c-row>
+                </c-card-body>
+            </c-card>
+
+            <hr />
+            <c-button-group>
+                <button cButton color="info" type="submit" [tabindex]="'0'">
+                    Salvar
+                </button>
+                <button cButton color="danger" type="reset" (click)="onReset()" [tabindex]="'0'">
+                    Limpar
+                </button>
+            </c-button-group>
+        </form>
+    </c-card-body>
+</c-card>

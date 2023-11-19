@@ -1,0 +1,94 @@
+<c-card>
+    <c-card-body>
+        <form cForm [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+            <c-row [gutter]="2">
+                <c-col [sm]="6" [md]="6" [xl]="6">
+                    <div cFormFloating>
+                        <input cFormControl formControlName="email" placeholder="Email" autocomplete="off" required
+                            [autofocus]="true" [valid]="
+                getForms['email'].touched && getForms['email'].valid
+                  ? true
+                  : (submitted || getForms['email'].touched) && getForms['email'].invalid
+                  ? false
+                  : undefined
+              " />
+                        <c-form-feedback *ngIf="submitted || getForms['email'].invalid"
+                            [valid]="!(submitted || getForms['email'].invalid)">
+                            <ng-container *ngIf="getForms['email'].errors as errors">
+                                <div>Email inválido</div>
+                            </ng-container>
+                        </c-form-feedback>
+                        <label cLabel for="floatingSelectGrid">Email</label>
+                    </div>
+                </c-col>
+                <c-col [sm]="6" [md]="6" [xl]="6">
+                    <div cFormFloating>
+                        <input cFormControl formControlName="perfil" placeholder="Perfil" autocomplete="off" required
+                            [autofocus]="true" [valid]="
+                getForms['perfil'].touched && getForms['perfil'].valid
+                  ? true
+                  : (submitted || getForms['perfil'].touched) && getForms['perfil'].invalid
+                  ? false
+                  : undefined
+              " />
+                        <c-form-feedback *ngIf="submitted || getForms['perfil'].invalid"
+                            [valid]="!(submitted || getForms['perfil'].invalid)">
+                            <ng-container *ngIf="getForms['perfil'].errors as errors">
+                                <div>Perfil inválido</div>
+                            </ng-container>
+                        </c-form-feedback>
+                        <label cLabel for="floatingSelectGrid">Perfil</label>
+                    </div>
+                </c-col>
+                <c-col [sm]="6" [md]="6" [xl]="6">
+                    <div cFormFloating>
+                        <input cFormControl formControlName="senha" placeholder="Senha" autocomplete="off" required
+                            [autofocus]="true" [valid]="
+                getForms['senha'].touched && getForms['senha'].valid
+                  ? true
+                  : (submitted || getForms['senha'].touched) && getForms['senha'].invalid
+                  ? false
+                  : undefined
+              " />
+                        <c-form-feedback *ngIf="submitted || getForms['senha'].invalid"
+                            [valid]="!(submitted || getForms['senha'].invalid)">
+                            <ng-container *ngIf="getForms['senha'].errors as errors">
+                                <div>Senha inválida</div>
+                            </ng-container>
+                        </c-form-feedback>
+                        <label cLabel for="floatingSelectGrid">Senha</label>
+                    </div>
+                </c-col>
+                <c-col [sm]="6" [md]="6" [xl]="6">
+                    <div cFormFloating>
+                        <input cFormControl formControlName="confirme_senha" placeholder="Confirme a Senha"
+                            autocomplete="off" required [autofocus]="true" [valid]="
+                getForms['confirme_senha'].touched && getForms['confirme_senha'].valid
+                  ? true
+                  : (submitted || getForms['confirme_senha'].touched) && getForms['confirme_senha'].invalid
+                  ? false
+                  : undefined
+              " />
+                        <c-form-feedback *ngIf="submitted || getForms['confirme_senha'].invalid"
+                            [valid]="!(submitted || getForms['confirme_senha'].invalid)">
+                            <ng-container *ngIf="getForms['confirme_senha'].errors as errors">
+                                <div>Senha incorreta</div>
+                            </ng-container>
+                        </c-form-feedback>
+                        <label cLabel for="floatingSelectGrid">Confirme a Senha</label>
+                    </div>
+                </c-col>
+            </c-row>
+            <hr />
+            <c-button-group>
+                <button cButton color="info" type="submit" [tabindex]="'0'">
+                    Salvar
+                </button>
+                <button cButton color="danger" type="reset" (click)="onReset()" [tabindex]="'0'">
+                    Limpar
+                </button>
+            </c-button-group>
+
+        </form>
+    </c-card-body>
+</c-card>

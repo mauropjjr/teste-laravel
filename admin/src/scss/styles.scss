@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+// If you want to override variables do it here
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import styles with default layout.
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+@import "layout";
+
+// Some temp fixes
+@import "fixes";
+
+// Prism.js
+@import "examples";
+
+// If you want to add something do it here
+@import "custom";
+
+@import 'ngx-toastr/toastr';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+.ng-select .ng-select-container  {            
+  border: 0 !important;
+  margin-top: -8px;
+}
+ .custom.invalid-feedback {
+  display: inline;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #e55353;
+}
+
+
+
+.form-invalid  input, .form-invalid  select{
+    padding-right: calc(1.5em + 0.75rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    border-color: $danger;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+}
+.form-invalid{
+    color:$danger !important;
+}
+
+
+
+// Cores personalizadas
+$input-bg: #fff;  // Cor de fundo
+$input-border: #ccc; // Cor da borda
+$input-color: #333; // Cor do texto
+label {
+    font-size: small;
+}
+// Estilo para inputs
+input.form-control {
+  background-color: $input-bg;
+  border: 1px solid $input-border;
+  color: $input-color;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: $input-border;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $info-dark; // Usando a cor pastel definida anteriormente
+    box-shadow: 0 0 5px $info-dark; // Sombra suave ao focar
+  }
+}
+
+// Estilo para seletores
+select.form-select {
+  background-color: $input-bg;
+  border: 1px solid $input-border;
+  color: $input-color;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $info-dark; // Usando a cor pastel definida anteriormente
+    box-shadow: 0 0 5px $info-dark; // Sombra suave ao focar
+  }
+}
+
+// Estilo para elementos de formulário menores
+.form-control-sm {
+  font-size: 14px;
+  padding: 5px;
+}
+
+// Estilo para elementos de formulário maiores
+.form-control-lg {
+  font-size: 18px;
+  padding: 15px;
+}
+

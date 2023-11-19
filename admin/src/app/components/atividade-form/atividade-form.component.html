@@ -1,0 +1,153 @@
+<form cForm [formGroup]="form" novalidate (ngSubmit)="onSubmit()" *ngIf="form">
+    <c-row [gutter]="2">
+        <c-col [sm]="12" [md]="6" [xl]="4">
+            <div class="form-floating mb-3">
+                <ng-select cFormControl formControlName="tipo_atividade_id" class="form-control custom"
+                    id="tipo_atividade_id" required>
+                    <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+                </ng-select>
+                <label for="tipo">Atividade</label>
+                <c-form-feedback class="custom"
+                    *ngIf="(submitted || getForms['tipo_atividade_id'].touched) && getForms['tipo_atividade_id'].invalid"
+                    [valid]="false">
+                    <ng-container *ngIf="getForms['tipo_atividade_id'].errors as errors">
+                        <div>Obrigatório</div>
+                    </ng-container>
+                </c-form-feedback>
+            </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="6" [xl]="8">
+            <div cFormFloating>
+                <input cFormControl id="assunto" formControlName="assunto" placeholder="Assunto" autocomplete="off"
+                    required [autofocus]="true" [valid]="
+    getForms['assunto'].touched && getForms['assunto'].valid
+      ? true
+      : (submitted || getForms['assunto'].touched) && getForms['assunto'].invalid
+      ? false
+      : undefined
+  " />
+
+                <label cLabel for="floatingSelectGrid">Assunto</label>
+                <c-form-feedback *ngIf="submitted || getForms['assunto'].invalid"
+                    [valid]="!(submitted || getForms['assunto'].invalid)">
+                    <ng-container *ngIf="getForms['assunto'].errors as errors">
+                        <div>Obrigatório</div>
+                    </ng-container>
+
+                </c-form-feedback>
+            </div>
+        </c-col>
+        <c-col [sm]="12" [md]="12" [xl]="12">
+
+            <textarea cFormControl type="number" id="descricao" formControlName="descricao" placeholder="Descrição"
+                style="min-height: 100px;" autocomplete="off" required [autofocus]="true" [valid]="
+    getForms['descricao'].touched && getForms['descricao'].valid
+      ? true
+      : (submitted || getForms['descricao'].touched) && getForms['descricao'].invalid
+      ? false
+      : undefined
+  "></textarea>
+
+            <c-form-feedback *ngIf="submitted || getForms['descricao'].invalid"
+                [valid]="!(submitted || getForms['descricao'].invalid)">
+                <ng-container *ngIf="getForms['descricao'].errors as errors">
+                    <div>Obrigatório</div>
+                </ng-container>
+
+            </c-form-feedback>
+
+        </c-col>
+        <c-col [sm]="12" [md]="5" [xl]="5">
+            <div cFormFloating>
+                <input type="datetime-local" cFormControl id="data_hora_ini" formControlName="data_hora_ini" (change)="criarObjetoDataHora(getForms['data_hora_ini'].value,getForms['duracao'].value)"
+                    placeholder="Data/Hora" autocomplete="off" required [autofocus]="true" [valid]="
+    getForms['data_hora_ini'].touched && getForms['data_hora_ini'].valid
+      ? true
+      : (submitted || getForms['data_hora_ini'].touched) && getForms['data_hora_ini'].invalid
+      ? false
+      : undefined
+  " />
+                <label cLabel for="floatingSelectGrid">Data/Hora</label>
+                <c-form-feedback *ngIf="submitted || getForms['data_hora_ini'].invalid"
+                    [valid]="!(submitted || getForms['data_hora_ini'].invalid)">
+                    <ng-container *ngIf="getForms['data_hora_ini'].errors as errors">
+                        <div>Obrigatório</div>
+                    </ng-container>
+
+                </c-form-feedback>
+            </div>
+        </c-col>
+
+        <c-col [sm]="12" [md]="2" [xl]="2">
+            <div cFormFloating>
+                <input cFormControl type="number" id="duracao" formControlName="duracao" placeholder="duracao"
+                    autocomplete="off" required [autofocus]="true" [valid]=" 
+    getForms['duracao'].touched && getForms['duracao'].valid
+      ? true
+      : (submitted || getForms['duracao'].touched) && getForms['duracao'].invalid
+      ? false
+      : undefined
+  " (change)="criarObjetoDataHora(getForms['data_hora_ini'].value,getForms['duracao'].value)" />
+                <label cLabel for="floatingSelectGrid">Duração</label>
+                <c-form-feedback *ngIf="submitted || getForms['duracao'].invalid"
+                    [valid]="!(submitted || getForms['duracao'].invalid)">
+                    <ng-container *ngIf="getForms['duracao'].errors as errors">
+                        <div>Obrigatório</div>
+                    </ng-container>
+
+                </c-form-feedback>
+            </div>
+        </c-col>
+        <c-col [sm]="12" [md]="5" [xl]="5">
+            <div cFormFloating>
+                <input type="datetime-local" cFormControl id="data_hora_fim" formControlName="data_hora_fim"
+                    placeholder="Data/Hora Fim" autocomplete="off" required [autofocus]="true" [valid]="
+    getForms['data_hora_fim'].touched && getForms['data_hora_fim'].valid
+      ? true
+      : (submitted || getForms['data_hora_fim'].touched) && getForms['data_hora_fim'].invalid
+      ? false
+      : undefined
+  " />
+                <label cLabel for="floatingSelectGrid">Data/Hora Fim</label>
+                <c-form-feedback *ngIf="submitted || getForms['data_hora_fim'].invalid"
+                    [valid]="!(submitted || getForms['data_hora_fim'].invalid)">
+                    <ng-container *ngIf="getForms['data_hora_fim'].errors as errors">
+                        <div>Obrigatório</div>
+                    </ng-container>
+
+                </c-form-feedback>
+            </div>
+        </c-col>
+
+
+
+
+        <c-col [xs]="12">
+            <c-form-check class="mb-3">
+                <input [valid]="!(submitted || getForms['concluido'].invalid)" cFormCheckInput id="concluido"
+                    type="checkbox">
+                <label cFormCheckLabel for="concluido">Concluido</label>
+            </c-form-check>
+            <c-form-feedback *ngIf="submitted || getForms['concluido'].invalid"
+                [valid]="!(submitted || getForms['concluido'].invalid)">
+                <ng-container *ngIf="getForms['concluido'].errors as errors">
+                    <div>Obrigatório</div>
+                </ng-container>
+
+            </c-form-feedback>
+        </c-col>
+
+
+
+    </c-row>
+    <hr />
+    <c-button-group>
+        <button cButton color="primary" type="submit">
+            Salvar
+        </button>
+        <button cButton color="danger" type="reset" (click)="onReset()">
+            Limpar
+        </button>
+    </c-button-group>
+</form>

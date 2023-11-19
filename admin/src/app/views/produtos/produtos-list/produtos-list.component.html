@@ -1,0 +1,38 @@
+<c-card class="mb-3">
+    <c-card-body  *ngIf="produtos?.data">
+        <table striped cTable hover>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of produtos.data">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.descricao}}</td>
+                    <td>{{item.valor}}</td>
+                    <td>{{item.status}}</td>
+                    <td><input cButton class="me-1" size="sm" color="primary" type="button" value="Editar" [routerLink]="['/produtos/save/',item.id]">
+                        <input cButton class="me-1" size="sm"  color="danger" type="button" value="Remover" (click)="remover(item.id)">
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item" (click)="buscar(p1=p1-1)" *ngIf="produtos.prev_page_url"><a class="page-link">Anterior</a></li>
+              <li class="page-item" (click)="buscar(p1=p1+1)" *ngIf="produtos.next_page_url"><a class="page-link">Próximo</a></li>
+            </ul>
+          </nav>
+       
+
+    </c-card-body>
+</c-card>

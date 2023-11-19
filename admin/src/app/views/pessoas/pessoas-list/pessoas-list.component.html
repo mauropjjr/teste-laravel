@@ -1,0 +1,38 @@
+<c-card class="mb-3">
+    <c-card-body>
+        <table striped cTable hover *ngIf="usuarios?.data">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Quantidade</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of usuarios.data">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.telefone}}</td>
+                    <td>{{item.celular}}</td>
+                    <td>{{item.cpf}}</td>
+                    <td>{{item.produto.nome}}</td>
+                    <td>{{item.quantidade}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item" (click)="buscar(p1=p1-1)" *ngIf="usuarios.prev_page_url"><a class="page-link">Anterior</a></li>
+              <li class="page-item" (click)="buscar(p1=p1+1)" *ngIf="usuarios.next_page_url"><a class="page-link">Próximo</a></li>
+            </ul>
+          </nav>
+       
+
+    </c-card-body>
+</c-card>
