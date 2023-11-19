@@ -15,7 +15,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FloatingButtonModule } from '../../components/floating-button/floating-button.module';
 const maskConfig: Partial<IConfig> = {
-  validation: true,
+  validation: false,
 };
 
 

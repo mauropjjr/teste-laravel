@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends Controller
 {
@@ -14,6 +15,22 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
+        $regrasValidacao = [
+            'nome' => 'required|string',
+            'telefone' => 'required|string',
+            'celular' => 'required|string',
+            'cpf' => 'required|string|cpf',
+            'produto_id' => 'required|numeric|gt:0',
+            'quantidade' => 'required|numeric|gt:0'
+        ];
+        // Executa a validação dos dados recebidos
+        $validator = Validator::make($request->all(), $regrasValidacao);
+
+        // Se a validação falhar, retorna uma resposta de erro com os detalhes
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        
         return Usuario::create($request->all());
     }
 
