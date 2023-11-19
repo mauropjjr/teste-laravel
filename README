@@ -1,0 +1,15 @@
+INSTALAÇÃO DOS SERVIÇOS
+docker-compose up -d --build
+docker-compose exec -it app php artisan migrate
+docker-compose exec -it app php artisan migrate
+
+URLs
+API
+http://localhost/api
+
+SITE - para cadastro de compras de produtos
+http://localhost/site
+
+ADMIN - para cadastro e acompanhamento de compras de produtos
+http://localhost/admin
+

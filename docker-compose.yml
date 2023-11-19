@@ -16,9 +16,12 @@ services:
   app:
     build:
       context: .
+      target: production
       dockerfile: ./backend/Dockerfile
-    volumes:
-      - ./backend/:/var/www/html
+    # volumes:
+    #   - ./backend/:/var/www/html
+    depends_on:
+      - db
     networks:
       - app-network
 

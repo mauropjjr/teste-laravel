@@ -8,6 +8,7 @@ import { AppInterceptor } from './services/app-interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { IConfig, NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 const maskConfig: Partial<IConfig> = {
   validation: true,
@@ -28,7 +29,12 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskDirective, NgxMaskPipe
 
   ],
-  providers: [    {
+  providers: [    
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AppInterceptor,
     multi: true,
