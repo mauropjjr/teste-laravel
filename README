@@ -1,3 +1,6 @@
+PRE-REQUISITOS
+Ter o docker e o docker-compose instalado
+
 INSTALAÇÃO DOS SERVIÇOS
 docker-compose up -d --build
 docker-compose exec -it app php artisan migrate
