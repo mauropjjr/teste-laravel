@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '', component: PessoasComponent,
     data: {
-      title: 'Pessoas'
+      title: 'Pedidos'
     },
 
     children: [
@@ -17,7 +17,7 @@ const routes: Routes = [
       {
         path: 'lista', component: PessoasListComponent,
         data: {
-          title: 'Lista de Pessoas'
+          title: 'Lista de Pedidos'
         }
       },
       {
